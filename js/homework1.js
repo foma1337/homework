@@ -21,3 +21,4 @@ if (purchase >= 3000){
     console.log("skidka 10%+podarok");
 }
 
+
