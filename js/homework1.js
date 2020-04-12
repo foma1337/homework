@@ -8,17 +8,22 @@
 
 
 let purchase = 2500;
+
 if (purchase <= 1000) {
-    console.log("skidka ne predusmotrena");
+    let money = purchase;
+    console.log(purchase + " - skidka ne predusmotrena");
+} 
+else if (purchase >= 1000 && purchase <= 2000) {
+    let money = purchase - (purchase * 5 / 100); 
+    console.log(money + " - skidka 5%");
 }
-if (purchase >= 1000 && purchase <= 2000) {
-    console.log("skidka 5%");
+else if (purchase >= 2000 && purchase <= 3000) {
+    let money = purchase -(purchase * 10 / 100); 
+    console.log(money + " - skidka 10%");
 }
-if (purchase >= 2000 && purchase <= 3000) {
-    console.log("skidka 10%");
-}
-if (purchase >= 3000){
-    console.log("skidka 10%+podarok");
+else if (purchase >= 3000) {
+    let money = purchase - (purchase * 10 / 100); 
+    console.log(money + " - skidka 10%+podarok");
 }
 
 

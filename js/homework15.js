@@ -4,7 +4,7 @@
 числа строки, например для данной строки массив будет вида
 [9, 1, 1120] */
 
-let single = "ylica lomonosova dom 8 korpus 1 office 1120".split(' ');
+let single = "ylica lomonosova dom 9 korpus 1 office 1120".split(' ');
 let arr = [];
 
 

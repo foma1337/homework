@@ -19,12 +19,12 @@ if (user > 3) {
 let arr1 = [];
 let arr2 = [];
 for (let i = 0; i < user; i++) {
-	let rand = Math.floor(Math.random() * user+1);
+	let rand = Math.floor(Math.random() * (user-0)+0);
 	arr1[i] = rand;
 }
 console.log(arr1);
 for (i = 0; i < arr1.length; i++) {
-	if (arr1[i] % 2) {
+	if (arr1[i] % 2 == 0) {
 		arr2.push(arr1[i]);
 	}
 }
