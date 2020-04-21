@@ -6,13 +6,31 @@
 
 let arr = [];
 let x = [];
+let max_x = 1;
+
 for (let i = 0; i < 11; i++) {
     arr[i] = Math.floor(Math.random() * (1 - (-1) + 1) + (-1));
-for (let i = 0; i < arr.length; i++) {
-        for (let j = 0; j < arr.length; j++)
-            if (arr[i] == arr[j]);
-    }
-    console.log(arr)
 
 }
-console.log(arr); 
+console.log(arr);
+
+for (let i = 1; i < 10; i++) {
+    let x = 1;
+
+    for (let j = i + 1; j < 11; j++) {
+        if (arr[i] === arr[j]) {
+            x++;
+        }
+        if (x > max_x) {
+            max_x = x;
+            num = arr[i];
+        }
+
+    }
+}
+
+if (max_x > 1) {
+    console.log(max_x, `раз(а) встречается число`, num)
+} else {
+    console.log(`Все элементы уникальны`);
+}
