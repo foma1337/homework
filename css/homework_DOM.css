@@ -1,0 +1,12 @@
+﻿#exress {
+    position:relative;
+    display:grid;
+    border:1px solid darkgray;
+    width:50%;
+    left: 15%;
+}
+
+.card {
+    border:1px solid darkgray;
+    text-align:center;
+}
