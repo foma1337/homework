@@ -1,5 +1,3 @@
-
-
 /* Написать функцию generateField(n) по генерации игрового поля размером n x n.
 Значение n не может быть меньше 3.
 Для 3х ячеек поля(для выбора конкретной ячейки использовать random) 
@@ -8,55 +6,60 @@
 для 2й ячейки значение атрибута prise="book",
 для 3й ячейки значение атрибута prise="car" */
 
-let Obj = {
+let getPrice = () => {
+    return {
     cat: "Кот",
     book: "Книга",
     car: "Машина",
-    generateField: function (n) {
-        let price = ['cat', 'book', 'car'];
-        let a = Math.floor(Math.random() * (n * n));
-        let b = Math.floor(Math.random() * (n * n));
-        let c = Math.floor(Math.random() * (n * n));
-        let j = 0;
-
-        let title;
-
-        console.log(a, b, c);
-
-        let still = document.getElementById('express');
-        still.style.cssText = `grid-template-columns: repeat(${n},1fr); grid-template-rows: repeat(${n},1fr);`;
-
-        for (let i = 0; i < n * n; i++) {
-            let div = document.createElement('div');
-            div.classList.add('card');
-
-            switch (i) {
-
-                case a:
-                    div.setAttribute('price', `${price[j]}`);
-                    title = document.createElement('h2');
-                    title.innerText = this[price[j]];
-                    j++;
-                    div.append(title);
-                    break;
-                case b:
-                    div.setAttribute('price', `${price[j]}`);
-                    title = document.createElement('h2');
-                    title.innerText = this[price[j]];
-                    div.append(title);
-                    j++;
-                    break;
-                case c:
-                    div.setAttribute('price', `${price[j]}`);
-                    title = document.createElement('h2');
-                    title.innerText = this[price[j]];
-                    div.append(title);
-                    j++;
-            }
-            still.append(div);
-        }
-
     }
-};
-let n = 6;
-Obj.generateField(n);
+}
+
+function generateField(n) {
+    let field = document.getElementById("price");
+    let present1 = 0;
+    let present2 = 0;
+    let present3 = 0;
+    while (true) {
+        present1 = Math.floor(Math.random() * (n));
+        present2 = Math.floor(Math.random() * (n));
+        present3 = Math.floor(Math.random() * (n));
+        if ((present1 !== present2) && (present1 !== present3) && (present2 !== present3)) break;
+    }
+    for (let i = 0; i < n; i++) {
+        cell = document.createElement("div");
+        if (i === present1) cell.setAttribute("data-prize", "cat");
+        if (i === present2) cell.setAttribute("data-prize", "book");
+        if (i === present3) cell.setAttribute("data-prize", "car");
+        cell.classList.add("cell");
+        field.append(cell);
+    }
+ }
+
+generateField(15);
+
+/* Продолжение задачи lesson 6: пользователю дается какое - то
+количество попыток, чтобы найти приз, если ему удается
+найти спрятанный приз за указанное количество попыток,
+то отобразить пользователю его приз, если не удалось,
+то вывести информацию об этом.После каждой попытки
+отображать, сколько попыток осталось.Если пользователь
+получил приз или закончились попытки, он не может
+продолжить игру(удалить обработчик события). */
+
+let x = prompt('сыграем в игру? у тебя 5 попыток');
+
+price = document.getElementById("price");
+price.addEventListener("click", showPrice);
+
+function showPrice(event) {
+    let clickElem = event.target;
+    let present = clickElem.dataset.prize;
+    console.log("present= " + present);
+    if (present) {
+        clickElem.innerText = getPrice()[present];
+        clickElem.classList.add("present");
+        this.removeEventListener("click", showPrice);
+    }
+
+}
+
